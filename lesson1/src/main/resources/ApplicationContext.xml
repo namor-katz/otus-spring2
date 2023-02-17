@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="csv" class="com.katzendorn.entity.SourceDataImpl">
+        <property name="resource" value="one.csv"/>
+    </bean>
+    <bean id="check" class="com.katzendorn.service.CheckAnswerImpl">
+        <constructor-arg index="0" ref="ioservice"/>
+    </bean>
+    <bean id="ioservice" class="com.katzendorn.service.IOService"/>
+    <!-- пример бина с конструктором и внедрением зависимостей в него -->
+    <bean id="mainService" class="com.katzendorn.service.MainService">
+        <constructor-arg index="0" ref="csv"/>
+        <constructor-arg index="1" ref="check"/>
+        <constructor-arg index="2" ref="ioservice"/>
+    </bean>
+</beans>
