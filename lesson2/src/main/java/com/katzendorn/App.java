@@ -11,11 +11,8 @@ public class App {
 
     public static void main(String[] args){
         var ctx = new AnnotationConfigApplicationContext(Configure.class);
-        GreeterService gs = ctx.getBean(GreeterService.class);
-        String name = gs.whoAmi();
-        System.out.println("Hello " + name);
         MainService mainService = ctx.getBean(MainService.class);
         mainService.queste();
-        System.out.println(name + " you have " + mainService.getResult() + " correct answers of 5");
+        System.out.println(mainService.getName() + " you have " + mainService.getResult() + " correct answers of 5");
     }
 }

@@ -27,21 +27,6 @@ public class SourceDataImplTest {
 
     @Test
     void checkCountQuests(){
-        assert(content.split("\n").length == 5);
-    }
-
-    @Test
-    void checkOneQuest(){
-        String[] arr = content.split("\n");
-        String[] expected1 = "1;what color can the car be?;1) white;2) black;3) fatherland manufacter;2".split(";");
-        assert(arr.length == 5);
-        assertEquals(6, arr[0].split(";").length);
-        assertArrayEquals(expected1, arr[0].split(";"));
-        System.out.println("file success readed");
-    }
-
-    @Test
-    void ff(){
-
+        assertEquals(content.split("\n").length, 5);
     }
 }

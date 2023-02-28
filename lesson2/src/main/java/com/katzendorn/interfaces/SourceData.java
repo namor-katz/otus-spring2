@@ -1,6 +1,8 @@
 package com.katzendorn.interfaces;
 
+import java.util.Map;
+
 public interface SourceData {
     String[] getAllContent();
-    Object[] getQuestionSource(String source);
+    Map<String, Object> getQuestionSource(String source);
 }

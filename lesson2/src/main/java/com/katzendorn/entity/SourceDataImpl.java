@@ -9,16 +9,19 @@ import org.springframework.util.FileCopyUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import static com.katzendorn.interfaces.Constants.*;
 
 @Getter
 @Setter
 public class SourceDataImpl implements SourceData {
     private Resource resource;
-    private byte[] bytes = null;
     @Override
     public String[] getAllContent() {
+        byte[] bytes = null;
         try {
             InputStream inputStream = resource.getInputStream();
             bytes = FileCopyUtils.copyToByteArray(inputStream);
@@ -30,20 +33,19 @@ public class SourceDataImpl implements SourceData {
     }
 
     @Override
-    public Object[] getQuestionSource(String source) {
-        String[] sourceAsArray = source.split(";");
-        int length = sourceAsArray.length;
-        Object[] result = new Object[length];
+    public Map<String, Object> getQuestionSource(String sourceStringOfCsv){
+        Map<String, Object> fromQuest = new HashMap<>();
 
-        result[0] = Integer.parseInt(sourceAsArray[0]);
-        result[1] = sourceAsArray[1];
+        String[] sourceAsArray = sourceStringOfCsv.split(";");
+        int length = sourceAsArray.length;
+        fromQuest.put(ID, Integer.parseInt(sourceAsArray[0]));
+        fromQuest.put(QUEST, sourceAsArray[1]);
         List<String> ll = new LinkedList<>();
         for(int i=2; i<5; i++){
             ll.add(sourceAsArray[i]);
         }
-        result[2] = ll;
-        result[3] = Integer.parseInt(sourceAsArray[length-1]);
-
-        return result;
+        fromQuest.put(VERSIONS, ll);
+        fromQuest.put(ANSWER, Integer.parseInt(sourceAsArray[length-1])) ;
+        return fromQuest;
     }
 }

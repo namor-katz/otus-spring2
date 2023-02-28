@@ -1,12 +1,13 @@
 package com.katzendorn.service;
 
 import com.katzendorn.entity.Quest;
+import com.katzendorn.entity.SourceDataImpl;
 import com.katzendorn.interfaces.CheckAnswer;
+import com.katzendorn.interfaces.SourceData;
 
 import java.util.Scanner;
 
 public class CheckAnswerImpl implements CheckAnswer {
-    private int allAnswer = 5;
     private int rightAnswer = 0;
     private final IOService io;
 

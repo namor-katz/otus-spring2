@@ -7,18 +7,23 @@ import com.katzendorn.service.CheckAnswerImpl;
 import com.katzendorn.service.GreeterService;
 import com.katzendorn.service.IOService;
 import com.katzendorn.service.MainService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 @Configuration
+@PropertySource("classpath:application.properties")//несмотря на все крики про автоконфигурируемость указывать путь к конф файлу придётся явно. возможно в буте это не так.
 public class Configure {
+    @Value("${file}")
+    private String resourceCsv;
 
     @Bean
     public SourceData csv(){
         SourceDataImpl csv = new SourceDataImpl();
-        Resource resource = new ClassPathResource("one.csv");
+        Resource resource = new ClassPathResource(resourceCsv);
         csv.setResource(resource);
         return csv;
     }
@@ -34,8 +39,8 @@ public class Configure {
     }
 
     @Bean
-    public MainService mainService(SourceData csv, CheckAnswer check, IOService ioService){
-        return new MainService(csv, check, ioService);
+    public MainService mainService(SourceData csv, CheckAnswer check, IOService ioService, GreeterService gs){
+        return new MainService(csv, check, ioService, gs);
     }
 
     @Bean
