@@ -18,10 +18,10 @@ public class Quest {
     private List<String> versions;
     private final int answer;
 
-    public Quest(Map<String, Object> sourceMap){
-        this.id = (int) sourceMap.get(ID);
-        this.question = (String) sourceMap.get(QUEST);
-        this.versions = (List<String>) sourceMap.get(VERSIONS);
-        this.answer = (int) sourceMap.get(ANSWER);
+    public Quest(int id, String question, List<String> versions, int answer){
+        this.id = id;
+        this.question = question;
+        this.versions = versions;
+        this.answer = answer;
     }
 }

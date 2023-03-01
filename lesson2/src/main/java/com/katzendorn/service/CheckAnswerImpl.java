@@ -1,11 +1,7 @@
 package com.katzendorn.service;
 
 import com.katzendorn.entity.Quest;
-import com.katzendorn.entity.SourceDataImpl;
 import com.katzendorn.interfaces.CheckAnswer;
-import com.katzendorn.interfaces.SourceData;
-
-import java.util.Scanner;
 
 public class CheckAnswerImpl implements CheckAnswer {
     private int rightAnswer = 0;
@@ -13,11 +9,6 @@ public class CheckAnswerImpl implements CheckAnswer {
 
     public CheckAnswerImpl(IOService io){
         this.io = io;
-    }
-
-    @Override
-    public void printQuestions(Quest quest){
-        io.printQuestions(quest);//у нас есть объявленный интерфейс, которым уже пользуются 1.5 землекопа. мы не имеем права обмануть их ожидания.
     }
 
     @Override

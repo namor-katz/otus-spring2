@@ -13,7 +13,6 @@ public class MainService {
     private final IOService ioService;
     private final List<Quest> quests = new LinkedList<>();
     private final GreeterService greeterService;
-    private String name = "Anonimous";//он никогда не будет анонимусом.
 
     public MainService(SourceData csv, CheckAnswer checkAnswer, IOService io, GreeterService gs){
         this.csv = csv;
@@ -24,11 +23,10 @@ public class MainService {
 
     public void queste(){
         String name = greeterService.whoAmi();
-        this.name = name;
         ioService.simplePrint("hallo " + name);
         String [] content = csv.getAllContent();
         for(String s : content){
-            quests.add(new Quest(csv.getQuestionSource(s)));
+            quests.add(csv.getOneQuestOfSource(s));
         }
         if(!quests.isEmpty()){
             ioService.simplePrint("Read next question, and print number right answer");
@@ -38,13 +36,10 @@ public class MainService {
                 checkAnswer.checkAnswer(q, v);
             }
         }
+        ioService.simplePrint(name + " you have " + getResult() + " correct answers of 5");
     }
 
     public int getResult(){
         return checkAnswer.getResult();
-    }
-
-    public String getName(){
-        return name;
     }
 }

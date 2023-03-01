@@ -1,6 +1,6 @@
 package com.katzendorn;
 
-import com.katzendorn.entity.SourceDataImpl;
+import com.katzendorn.repository.SourceDataImpl;
 import com.katzendorn.interfaces.CheckAnswer;
 import com.katzendorn.interfaces.SourceData;
 import com.katzendorn.service.CheckAnswerImpl;

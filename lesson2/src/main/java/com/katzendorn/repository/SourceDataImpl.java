@@ -1,5 +1,6 @@
-package com.katzendorn.entity;
+package com.katzendorn.repository;
 
+import com.katzendorn.entity.Quest;
 import com.katzendorn.interfaces.SourceData;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,19 +34,16 @@ public class SourceDataImpl implements SourceData {
     }
 
     @Override
-    public Map<String, Object> getQuestionSource(String sourceStringOfCsv){
-        Map<String, Object> fromQuest = new HashMap<>();
-
+    public Quest getOneQuestOfSource(String sourceStringOfCsv){
         String[] sourceAsArray = sourceStringOfCsv.split(";");
         int length = sourceAsArray.length;
-        fromQuest.put(ID, Integer.parseInt(sourceAsArray[0]));
-        fromQuest.put(QUEST, sourceAsArray[1]);
         List<String> ll = new LinkedList<>();
         for(int i=2; i<5; i++){
             ll.add(sourceAsArray[i]);
         }
-        fromQuest.put(VERSIONS, ll);
-        fromQuest.put(ANSWER, Integer.parseInt(sourceAsArray[length-1])) ;
-        return fromQuest;
+        int id = Integer.parseInt(sourceAsArray[0]);
+        String question = sourceAsArray[1];
+        int answerNumber = Integer.parseInt(sourceAsArray[length-1]);
+        return new Quest(id, question, ll, answerNumber);
     }
 }
