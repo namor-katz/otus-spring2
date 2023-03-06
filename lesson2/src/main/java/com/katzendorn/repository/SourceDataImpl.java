@@ -20,8 +20,19 @@ import static com.katzendorn.interfaces.Constants.*;
 @Setter
 public class SourceDataImpl implements SourceData {
     private Resource resource;
+
     @Override
-    public String[] getAllContent() {
+    public List<Quest> getQuests(){
+        List<Quest> quests = new LinkedList<>();
+        String[] content = getAllContent();
+        for(String s : content){
+            quests.add(getOneQuestOfSource(s));
+        }
+        return quests;
+    }
+
+
+    private String[] getAllContent() {
         byte[] bytes = null;
         try {
             InputStream inputStream = resource.getInputStream();
@@ -33,8 +44,7 @@ public class SourceDataImpl implements SourceData {
         return result.split("\n");
     }
 
-    @Override
-    public Quest getOneQuestOfSource(String sourceStringOfCsv){
+    private Quest getOneQuestOfSource(String sourceStringOfCsv){
         String[] sourceAsArray = sourceStringOfCsv.split(";");
         int length = sourceAsArray.length;
         List<String> ll = new LinkedList<>();

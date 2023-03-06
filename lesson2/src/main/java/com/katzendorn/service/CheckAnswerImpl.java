@@ -36,11 +36,6 @@ public class CheckAnswerImpl implements CheckAnswer {
     }
 
     @Override
-    public String getInput() {
-       return io.getInput();
-    }
-
-    @Override
     public int getResult(){
         return rightAnswer;
     }

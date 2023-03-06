@@ -14,6 +14,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import java.util.Scanner;
+
 @Configuration
 @PropertySource("classpath:application.properties")//несмотря на все крики про автоконфигурируемость указывать путь к конф файлу придётся явно. возможно в буте это не так.
 public class Configure {
@@ -30,7 +32,7 @@ public class Configure {
 
     @Bean
     public IOService ioservice(){
-        return new IOService();
+        return new IOService(System.out, new Scanner(System.in));
     }
 
     @Bean

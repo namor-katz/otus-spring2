@@ -6,8 +6,13 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class IOService {
-    private final PrintStream out = System.out;
+    private final PrintStream out;
+    private final Scanner scanner;
 
+    public IOService(PrintStream ps, Scanner sc){
+        this.out = System.out;
+        this.scanner = sc;
+    }
 
     public void simplePrint(String s){
         out.println(s);
@@ -29,7 +34,6 @@ public class IOService {
     }
     public String getInput(){
         StringBuilder sb = new StringBuilder();
-        final Scanner scanner = new Scanner(System.in);
         for (String line = scanner.nextLine(); !line.isEmpty(); line = scanner.nextLine()) {
             sb.append(line);
         }
