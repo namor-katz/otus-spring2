@@ -10,4 +10,9 @@ class Lesson3ApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void serviceFirst(){
+
+	}
+
 }

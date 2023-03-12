@@ -29,7 +29,7 @@ public class MainService {
             ioService.simplePrint("Read next question, and print number right answer");
             for(Quest q : quests){
                 ioService.printQuestions(q);
-                String v = ioService.getInput();
+                String v = ioService.getInputNew();
                 checkAnswer.checkAnswer(q, v);
             }
         }

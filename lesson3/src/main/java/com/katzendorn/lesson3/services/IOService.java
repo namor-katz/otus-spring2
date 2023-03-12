@@ -1,8 +1,12 @@
 package com.katzendorn.lesson3.services;
 
 import com.katzendorn.lesson3.entity.Quest;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -35,11 +39,23 @@ public class IOService {
            out.println();
         }
     }
+
+    @Deprecated
     public String getInput(){
         StringBuilder sb = new StringBuilder();
         for (String line = scanner.nextLine(); !line.isEmpty(); line = scanner.nextLine()) {
             sb.append(line);
         }
         return sb.length() == 0 ? null : sb.toString();
+    }
+
+    @SneakyThrows
+    public String getInputNew() {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        do{
+            sb.append(br.readLine());
+        }while (false);//мы будем читать значение лишь один раз.
+        return sb.isEmpty() ? null : sb.toString();
     }
 }

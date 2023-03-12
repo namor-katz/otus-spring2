@@ -2,11 +2,9 @@ package com.katzendorn.lesson3.repository;
 
 import com.katzendorn.lesson3.entity.Quest;
 import com.katzendorn.lesson3.interfaces.SourceData;
-import com.katzendorn.lesson3.utils.Util;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
@@ -17,14 +15,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.katzendorn.lesson3.interfaces.Constants.*;
-
 @Getter
 @Setter
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SourceDataImpl implements SourceData {
-    private final Util util;
+
+    @Value("${resources.data-file}")//почему-то эту строку нельзя передать в рукописный конструктор для создания ресурса. на этом этапе она почему-то пустая.
+    private String pathToCsvFile;//ёб твою мать, почему нельзя финал? а если прям нельзя, то где подсветка? ладно, хуй с ней с подсветкой. хотя бы внятная ошибка?
 
     @Override
     public List<Quest> getQuests(){
@@ -39,7 +37,7 @@ public class SourceDataImpl implements SourceData {
     private String[] getAllContent() {
         byte[] bytes = null;
         try {
-            Resource resource = util.loadCsvFileByPath();
+            Resource resource = new ClassPathResource(pathToCsvFile);
             InputStream inputStream = resource.getInputStream();
             bytes = FileCopyUtils.copyToByteArray(inputStream);
         }catch (IOException ioe){

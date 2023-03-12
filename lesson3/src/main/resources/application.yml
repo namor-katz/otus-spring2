@@ -1,1 +1,5 @@
-spring.banner.location=classpath:banner.txt
+spring:
+  banner:
+    location: banner.txt  #необязательный параметр. ибо расположение дефолтное.
+resources:
+  data-file: one.csv
