@@ -16,14 +16,14 @@ public class GreeterServiceTest {
     private ByteArrayInputStream in;
     private final String str = "Roman";
 
-    @BeforeEach
-    void init(){
-        IOService ioService = new IOService();
-        greeterService = new GreeterService(ioService);
-        sysIn = System.in;
-        in = new ByteArrayInputStream(str.getBytes());
-        System.setIn(in);
-    }
+//    @BeforeEach
+//    void init(){
+//        IOService ioService = new IOService();
+//        greeterService = new GreeterService(ioService);
+//        sysIn = System.in;
+//        in = new ByteArrayInputStream(str.getBytes());
+//        System.setIn(in);
+//    }
 
     @Test
     void isBeanExists(){
