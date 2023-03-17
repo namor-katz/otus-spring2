@@ -1,11 +1,8 @@
 package com.katzendorn.lesson3.services;
 
-import com.katzendorn.lesson3.config.AppProps;
 import com.katzendorn.lesson3.entity.Quest;
 import com.katzendorn.lesson3.interfaces.CheckAnswer;
 import com.katzendorn.lesson3.interfaces.SourceData;
-import com.katzendorn.lesson3.utils.LocalizedUtils;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +13,9 @@ public class MainService {
     private final CheckAnswer checkAnswer;
     private final IOService ioService;
     private final GreeterService greeterService;
-    private final LocalizedUtils localizedUtils;
+    private final LocalizedService localizedUtils;
 
-    public MainService(SourceData csv, CheckAnswer checkAnswer, IOService io, GreeterService gs, LocalizedUtils localizedUtils){
+    public MainService(SourceData csv, CheckAnswer checkAnswer, IOService io, GreeterService gs, LocalizedService localizedUtils){
         this.csv = csv;
         this.checkAnswer = checkAnswer;
         this.ioService = io;

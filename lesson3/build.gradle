@@ -21,8 +21,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	compileOnly 'org.projectlombok:lombok'
-//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
+//	optional "org.springframework.boot:spring-boot-configuration-processor"//@RequiredArgsConstructor
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
 	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.2'

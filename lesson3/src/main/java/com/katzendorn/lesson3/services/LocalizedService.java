@@ -1,4 +1,4 @@
-package com.katzendorn.lesson3.utils;
+package com.katzendorn.lesson3.services;
 
 import com.katzendorn.lesson3.config.AppProps;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class LocalizedUtils {
+public class LocalizedService {
     private final MessageSource messageSource;
     private final AppProps props;
 
