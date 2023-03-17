@@ -1,0 +1,11 @@
+spring:
+  messages:
+    basename: "i18n/appmessages"  #одна пропущенная буква будет стоит тебе полдня. например, i18 нет, это не проверяется идеей. нет, этого не будет в стектрейсе.
+    encoding: UTF-8
+  banner:
+    location: banner.txt  #необязательный параметр. ибо расположение дефолтное.
+resources:
+  data-file: one.csv
+application:
+  message: "WTF"
+  locale: ru_RU #вместо кириллицы какие-то вопросики. следить за фактической кодировкой файла.
