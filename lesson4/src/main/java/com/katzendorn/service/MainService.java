@@ -12,16 +12,13 @@ public class MainService {
     private final SourceData csv;
     private final CheckAnswer checkAnswer;
     private final IOService ioService;
-    private final GreeterService greeterService;
     private final LocalizedService localizedUtils;
     private final CacheService cache;
 
-    public MainService(SourceData csv, CheckAnswer checkAnswer, IOService io, GreeterService gs, LocalizedService localizedUtils,
-                       CacheService cache){
+    public MainService(SourceData csv, CheckAnswer checkAnswer, IOService io, LocalizedService localizedUtils, CacheService cache){
         this.csv = csv;
         this.checkAnswer = checkAnswer;
         this.ioService = io;
-        this.greeterService = gs;
         this.localizedUtils = localizedUtils;
         this.cache = cache;
     }
@@ -30,7 +27,7 @@ public class MainService {
         String name = cache.getValue("login");
 //        String name = greeterService.whoAmi();//сюда входим лишь после выхода из шелла. ( то бишь шелл, ко всему прочему, блокирует ожидаемую работу приложения.
         String hello = getLocaleMessage("user.hallo");
-        ioService.simplePrint(hello + name);
+        ioService.simplePrint(hello + " " + name);
         List<Quest> quests = csv.getQuests();
         if(!quests.isEmpty()){
             ioService.simplePrint(getLocaleMessage("user.offer"));

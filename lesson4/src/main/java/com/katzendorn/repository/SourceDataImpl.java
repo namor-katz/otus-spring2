@@ -1,5 +1,6 @@
 package com.katzendorn.repository;
 
+import com.katzendorn.config.AppProps;
 import com.katzendorn.entity.Quest;
 import com.katzendorn.interfaces.SourceData;
 import lombok.Getter;
@@ -23,9 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SourceDataImpl implements SourceData {
 
-    @Value("${resources.data-file}")//почему-то эту строку нельзя передать в рукописный конструктор для создания ресурса. на этом этапе она почему-то пустая.
-    private String pathToCsvFile;//ёб твою мать, почему нельзя финал? а если прям нельзя, то где подсветка? ладно, хуй с ней с подсветкой. хотя бы внятная ошибка?
-
+    private final AppProps appProps;
     @Override
     public List<Quest> getQuests(){
         List<Quest> quests = new LinkedList<>();
@@ -39,7 +38,7 @@ public class SourceDataImpl implements SourceData {
     private String[] getAllContent() {
         byte[] bytes = null;
         try {
-            Resource resource = new ClassPathResource(pathToCsvFile);
+            Resource resource = new ClassPathResource(appProps.getResources());
             InputStream inputStream = resource.getInputStream();
             bytes = FileCopyUtils.copyToByteArray(inputStream);
         }catch (IOException ioe){

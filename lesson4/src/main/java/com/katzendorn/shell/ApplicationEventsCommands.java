@@ -30,18 +30,6 @@ public class ApplicationEventsCommands {
         return calculateService.calculate(a, b);
     }
 
-    @Deprecated
-    @ShellMethod(value = "empty method from test")
-    public String empty(){
-        return "АХАХА я пустой метод у которого нет key!";
-    }
-
-    @Deprecated
-    @ShellMethod(value = "this boolean test")
-    public void sshLogin(@ShellOption(value = "--rr") boolean rem){//камел кейс превращается в ssh-login. очень интуитивно понятно, да.
-        System.out.println("ff " + rem);
-    }
-
     @ShellMethod(value = "Start!")
     public void start(){
         System.out.println("Как тебя звать? используй команду l моёИмя");
