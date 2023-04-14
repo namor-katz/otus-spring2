@@ -28,9 +28,9 @@ public class GreeterService {
     public String whoAmi() {
         String whoamiLocal = messageSource.getMessage("user.ask", new String[]{"i"}, props.getLocale());
         ioService.simplePrint(whoamiLocal);
-        String answer = ioService.getInputNew();
-        if(answer != null && !answer.isEmpty()){
-            return answer.trim();
+        String login = ioService.getInputNew();
+        if(login != null && !login.isEmpty()){
+            return login.trim();
         }else {
             if(counter < 3){
                 counter++;

@@ -4,6 +4,9 @@ spring:
     encoding: UTF-8
   banner:
     location: banner.txt  #необязательный параметр. ибо расположение дефолтное.
+  shell:
+    interactive:
+      enable: false
 application:
   message: "WTF"
   locale: ru_RU #вместо кириллицы какие-то вопросики. следить за фактической кодировкой файла.
